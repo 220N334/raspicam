@@ -1,0 +1,6 @@
+Makefile
+x64
+Debug
+Release
+bin
+bin-int

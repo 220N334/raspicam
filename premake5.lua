@@ -5,14 +5,43 @@ project "RaspiCam"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files
+	links
 	{
-		"src/**.h",
-		"src/**.cpp"
+		"opencv_core", "opencv_highgui", "opencv_imgproc", "opencv_imgcodecs"
 	}
 
-  includedirs
+	files
 	{
+		"src/raspicam_cv.h",
+		"src/raspicam_still_cv.h",
+		"src/raspicam_still.h",
+		"src/raspicam.h",
+		"src/raspicamtypes.h",
+		"src/scaler.h",
+		"src/raspicam_cv.cpp",
+		"src/raspicam_still_cv.cpp",
+		"src/raspicam_still.cpp",
+		"src/raspicam.cpp",
+		
+		"src/private/exceptions.h",
+		"src/private/private_impl.h",
+		"src/private/private_types.h",
+		"src/private/threadcondition.h",
+
+		"src/private/fake_mmal_dependencies.cpp",
+		"src/private/private_impl.cpp",
+		"src/private/threadcondition.cpp",
+
+		"src/private_still/private_still_impl.h",
+		"src/private_still/private_still_impl.cpp",
+	}
+
+	includedirs
+	{
+		"/usr/local/include/opencv4",
+		"src",
+		"dependencies/mmal",
+		"dependencies/vcos",
 		"dependencies"
 	}
 
